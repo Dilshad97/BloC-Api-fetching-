@@ -12,56 +12,55 @@ class CovidCases extends StatefulWidget {
 }
 
 class _CovidCasesState extends State<CovidCases> {
-
-  final covidbloc =CovidBloc();
-
-  BaseBloc getBaseBloc(){
-    return covidbloc;
-  }
+  final covidbloc = CovidBloc();
 
   @override
   void initState() {
     // TODO: implement initState
-    covidbloc.getdata();
+    covidbloc.getData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
-
+    return SafeArea(
+        child: Scaffold(
       appBar: AppBar(),
- body: Card(
-   child: Padding(
-     padding: const EdgeInsets.all(8.0),
-     child: Center(
-
-
-
-
-       child: StreamBuilder<CovidState>(
-         stream: covidbloc.covidState,
-         builder:  (context, snapshot) {
-           return Column(
-             children: [
-                         _data(snapshot?.data?.data,)
-             ],
-           ) ;
-         }
-       )
-     ),
-   ),
- ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+            child: StreamBuilder<CovidState>(
+                stream: covidbloc.covidState,
+                builder: (context, snapshot) {
+                  return ListView.separated(
+                      itemBuilder: (context, index) {
+                        return Card(
+                          child: Column(
+                            children: [_data(snapshot?.data?.data, index)],
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) => Divider(
+                            height: 4,
+                            thickness: 2,
+                            color: Colors.red,
+                          ),
+                      itemCount: snapshot?.data?.data?.country?.length ?? 0);
+                })),
+      ),
     ));
   }
 
-  Widget _data(Covid covid,)=> Column(
-    children: [
-      Text("New Confirmed  Cases:" +' '+"${covid?.newConfirmed??''}"),
-      Text("Total Confirmed Cases :" +' '+"${covid.totalConfirmed}"),
-      Text("Total Death  :" +' '+"${covid.totalDeaths}"),
-      Text("Total Recovered:" +' '+"${covid.totalRecovered}"),
-    ],
-  );
-
+  Widget _data(Covid covid, int index) => Column(
+        children: [
+          Text("Country : " + ' ' + "${covid.country[index].country}"),
+          Text("Country Code : " + ' ' + "${covid.country[index].countryCode}"),
+          Text("Country : " + ' ' + "${covid.country[index].country}"),
+          Text("New Confirmed  Cases:" + ' ' + "${covid?.newConfirmed ?? ''}"),
+          Text("Total Confirmed Cases :" + ' ' + "${covid.totalConfirmed}"),
+          Text("Total Death  :" + ' ' + "${covid.totalDeaths}"),
+          Text("Total Recovered:" + ' ' + "${covid.totalRecovered}"),
+          Text("Slug:" + ' ' + "${covid.country[index].slug}"),
+          Text("Slug:" + ' ' + "${covid.country[index].date}"),
+        ],
+      );
 }
-

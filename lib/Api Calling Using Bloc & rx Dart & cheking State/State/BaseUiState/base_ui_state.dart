@@ -28,7 +28,6 @@ class BaseUiState<T> {
   /// Returns true if the current [state] is [State.ERROR]
   bool isError() => this._state == null || this._state == State.ERROR;
 
-
   @override
   String toString() {
     return 'State is $_state';
