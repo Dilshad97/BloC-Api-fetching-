@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ftips_bloc_fetch_api/blocs/covid_bloc/covid_bloc.dart';
-import 'package:ftips_bloc_fetch_api/models/covid_model.dart';
+import 'package:ftips_bloc_fetch_api/Api_Calling%20Using%20BloC/blocs/covid_bloc/covid_bloc.dart';
+import 'package:ftips_bloc_fetch_api/Api_Calling%20Using%20BloC/models/covid_model.dart';
+
 
 class CovidPage extends StatefulWidget {
   @override

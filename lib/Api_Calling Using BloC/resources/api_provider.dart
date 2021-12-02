@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:ftips_bloc_fetch_api/models/covid_model.dart';
+import 'package:ftips_bloc_fetch_api/Api_Calling%20Using%20BloC/models/covid_model.dart';
+
 
 class ApiProvider {
   final Dio _dio = Dio();

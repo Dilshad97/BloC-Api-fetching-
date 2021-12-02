@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ftips_bloc_fetch_api/pages/covid_page.dart';
+
+import 'Api Calling Using Bloc & rx Dart & cheking State/ui/screen.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -9,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Covid List",
       debugShowCheckedModeBanner: false,
-      home: CovidPage(),
+      home: CovidCases(),
     );
   }
 }
